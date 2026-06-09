@@ -1,0 +1,32 @@
+/ 1️⃣ Flatten Nested List Iterator
+
+// 👉 LeetCode 341: Flatten Nested List Iterator
+
+// Stack + lazy flatten
+// VERY common in Meta
+// 2️⃣ Zigzag Iterator
+
+// 👉 LeetCode 281: Zigzag Iterator
+
+// Alternate between lists
+// Queue of iterators
+// 3️⃣ Peeking Iterator
+
+// 👉 LeetCode 284: Peeking Iterator
+
+// Cache next value
+// Wrapper pattern
+// 4️⃣ Design Compressed String Iterator
+
+// 👉 (You already did 👍)
+
+// 5️⃣ BST Iterator
+
+// 👉 LeetCode 173: Binary Search Tree Iterator
+
+// Stack + inorder traversal
+// 6️⃣ Design Hit Counter
+
+// 👉 LeetCode 362: Design Hit Counter
+
+// Find Median from Data Stream

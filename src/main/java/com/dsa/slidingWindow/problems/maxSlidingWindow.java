@@ -1,4 +1,4 @@
-package com.dsa.iterator.problems;
+package com.dsa.slidingWindow.problems;
 
 import java.util.LinkedList;
 import java.util.List;
