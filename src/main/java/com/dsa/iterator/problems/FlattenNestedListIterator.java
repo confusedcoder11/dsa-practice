@@ -1,6 +1,7 @@
 package com.dsa.iterator.problems;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 //https://leetcode.com/problems/flatten-nested-list-iterator/
