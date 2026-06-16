@@ -1,13 +1,3 @@
-/ 1️⃣ Flatten Nested List Iterator
-
-// 👉 LeetCode 341: Flatten Nested List Iterator
-
-// Stack + lazy flatten
-// VERY common in Meta
-// 2️⃣ Zigzag Iterator
-
-// 👉 LeetCode 281: Zigzag Iterator
-
 // Alternate between lists
 // Queue of iterators
 // 3️⃣ Peeking Iterator
