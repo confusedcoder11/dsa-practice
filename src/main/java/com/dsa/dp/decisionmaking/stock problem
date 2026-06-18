@@ -1,0 +1,29 @@
+| Problem             | Idea            |
+| ------------------- | --------------- |
+| Stock I             | one transaction |
+| Stock II            | greedy          |
+| Stock III           | k = 2           |
+| Stock IV            | general DP      |
+| Stock with cooldown | add state       |
+| Stock with fee      | adjust sell     |
+
+
+Problem : Stock IV
+
+    🧠 Intuition Upgrade (Important)
+
+    Think like this:
+
+    “Buying is not just paying price —
+    it’s price minus what I already earned before.”
+
+        🔥 Hints (to remember in interview)
+        Hint 1
+
+        If a problem says k transactions, think:
+        👉 “DP with transaction states”
+
+        Hint 2
+
+        Ask yourself:
+        👉 “What is the best state if I buy today?”
