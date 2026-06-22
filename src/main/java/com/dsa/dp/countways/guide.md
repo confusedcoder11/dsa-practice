@@ -1,210 +1,331 @@
-You’ve picked one of the most important DP patterns for interviews — “counting distinct ways”. This shows up everywhere (Google, Uber, etc.).
+You’ve picked one of the **most important DP patterns for interviews** — “**counting distinct ways**”. This shows up *everywhere* (Google, Uber, etc.).
 
-Let’s break this properly so you can recognize and solve ANY of these in 2–5 minutes.
+Let’s break this properly so you can **recognize and solve ANY of these in 2–5 minutes**.
 
-🔥 Core Idea: “DP = Count Ways”
+---
+
+# 🔥 Core Idea: “DP = Count Ways”
 
 Whenever problem says:
 
-“number of ways”
-“how many sequences”
-“count paths / combinations / permutations”
+* “number of ways”
+* “how many sequences”
+* “count paths / combinations / permutations”
 
-👉 You are doing DP counting, not optimization.
+👉 You are doing **DP counting**, not optimization.
 
-🧠 Step 1: Identify STATE
+---
+
+# 🧠 Step 1: Identify STATE
 
 This is where most people fail.
 
-Ask:
+### Ask:
 
-“What parameters uniquely define my position?”
+> “What parameters uniquely define my position?”
 
-Common State Patterns:
-1. Single dimension (1D DP)
-   dp[i] = ways to reach i
+### Common State Patterns:
 
-Examples:
+### 1. Single dimension (1D DP)
 
-Climbing Stairs
-Combination Sum IV
-2. Grid / 2D position
-   dp[i][j] = ways to reach (i, j)
+* `dp[i] = ways to reach i`
 
 Examples:
 
-Unique Paths
-Unique Paths II
-3. Index + constraint
-   dp[i][sum]
-   dp[i][steps]
-   dp[i][k]
+* Climbing Stairs
+* Combination Sum IV
+
+---
+
+### 2. Grid / 2D position
+
+* `dp[i][j] = ways to reach (i, j)`
 
 Examples:
 
-Target Sum
-Number of Dice Rolls With Target Sum
-4. Position + direction / memory
-   dp[i][j][k]
+* Unique Paths
+* Unique Paths II
+
+---
+
+### 3. Index + constraint
+
+* `dp[i][sum]`
+* `dp[i][steps]`
+* `dp[i][k]`
 
 Examples:
 
-Out of Boundary Paths
-Knight Dialer
-5. DP with transitions + constraints
-   tricky rules
+* Target Sum
+* Number of Dice Rolls With Target Sum
+
+---
+
+### 4. Position + direction / memory
+
+* `dp[i][j][k]`
 
 Examples:
 
-Dice Roll Simulation
-Count Vowels Permutation
-⚡ Step 2: Transition = “Where can I come from?”
+* Out of Boundary Paths
+* Knight Dialer
+
+---
+
+### 5. DP with transitions + constraints
+
+* tricky rules
+
+Examples:
+
+* Dice Roll Simulation
+* Count Vowels Permutation
+
+---
+
+# ⚡ Step 2: Transition = “Where can I come from?”
 
 Golden rule:
 
-dp[current] = sum of all valid previous states
+> **dp[current] = sum of all valid previous states**
 
-Example 1: Climbing Stairs
+---
+
+### Example 1: Climbing Stairs
+
+```text
 dp[i] = dp[i-1] + dp[i-2]
-Example 2: Unique Paths
+```
+
+---
+
+### Example 2: Unique Paths
+
+```text
 dp[i][j] = dp[i-1][j] + dp[i][j-1]
-Example 3: Target Sum
+```
+
+---
+
+### Example 3: Target Sum
+
+```text
 dp[i][sum] = dp[i-1][sum + nums[i]] + dp[i-1][sum - nums[i]]
-🔁 Step 3: Base Case
+```
+
+---
+
+# 🔁 Step 3: Base Case
 
 This is VERY important.
 
-“1 way to do nothing” → initialize with 1
-Starting position → 1
-Invalid states → 0
+* “1 way to do nothing” → initialize with 1
+* Starting position → 1
+* Invalid states → 0
+
+---
 
 Examples:
 
-dp[0] = 1 → Combination Sum
-dp[0][0] = 1 → Grid
-Out of bound → contributes 1 (in boundary problems)
-🔄 Step 4: Order of Computation
+* `dp[0] = 1` → Combination Sum
+* `dp[0][0] = 1` → Grid
+* Out of bound → contributes 1 (in boundary problems)
+
+---
+
+# 🔄 Step 4: Order of Computation
 
 Depends on dependency:
 
-Pattern	Order
-1D DP	left → right
-Grid	top-left → bottom-right
-Sum DP	nested loops
-Memo recursion	DFS
-🧩 Step 5: Recognize SUBTYPE (VERY IMPORTANT)
+| Pattern        | Order                   |
+| -------------- | ----------------------- |
+| 1D DP          | left → right            |
+| Grid           | top-left → bottom-right |
+| Sum DP         | nested loops            |
+| Memo recursion | DFS                     |
+
+---
+
+# 🧩 Step 5: Recognize SUBTYPE (VERY IMPORTANT)
 
 This is the real interview skill 👇
 
-🟢 1. Fibonacci Type
-Only depends on previous few states
+---
+
+## 🟢 1. Fibonacci Type
+
+* Only depends on previous few states
 
 Problems:
 
-Climbing Stairs
-Domino and Tromino Tiling
+* Climbing Stairs
+* Domino and Tromino Tiling
 
 👉 Pattern:
 
+```text
 dp[i] = dp[i-1] + dp[i-2] + ...
-🟡 2. Grid Paths
+```
+
+---
+
+## 🟡 2. Grid Paths
 
 Problems:
 
-Unique Paths
-Out of Boundary Paths
+* Unique Paths
+* Out of Boundary Paths
 
 👉 Pattern:
 
+```text
 dp[i][j] = sum of neighbors
-🔵 3. Subset / Target DP
+```
+
+---
+
+## 🔵 3. Subset / Target DP
 
 Problems:
 
-Partition Equal Subset Sum
-Target Sum
+* Partition Equal Subset Sum
+* Target Sum
 
 👉 Pattern:
 
+```text
 dp[i][sum] = take + not take
-🟣 4. Sequence Building / Permutations
+```
+
+---
+
+## 🟣 4. Sequence Building / Permutations
 
 Problems:
 
-Combination Sum IV
-Number of Dice Rolls With Target Sum
+* Combination Sum IV
+* Number of Dice Rolls With Target Sum
 
 👉 Pattern:
 
+```text
 for target:
-for choices:
-🔴 5. State Machine DP
+  for choices:
+```
+
+---
+
+## 🔴 5. State Machine DP
 
 Problems:
 
-Count Vowels Permutation
-Dice Roll Simulation
+* Count Vowels Permutation
+* Dice Roll Simulation
 
 👉 Pattern:
 
-fixed transitions between states
-⚫ 6. Probability DP
+* fixed transitions between states
+
+---
+
+## ⚫ 6. Probability DP
 
 Problems:
 
-Knight Probability in Chessboard
-Soup Servings
+* Knight Probability in Chessboard
+* Soup Servings
 
 👉 Same DP, but divide by possibilities
 
-🧠 Master Formula (Remember This)
+---
+
+# 🧠 Master Formula (Remember This)
+
+```text
 1. Define state
 2. Write recurrence
 3. Initialize base
 4. Iterate in correct order
 5. Optimize space if needed
-   🚀 How to Solve ANY of These in Interview
+```
+
+---
+
+# 🚀 How to Solve ANY of These in Interview
 
 When you see problem:
 
-Step-by-step thinking:
-❓ “What am I counting?”
-📍 “What defines my state?”
-🔁 “Where can I come from?”
-🧱 “What are base cases?”
-🔄 “Tabulation or recursion?”
-💡 Pro Tips (THIS is what makes you strong)
-If order matters → permutation DP
-If order doesn’t matter → combination DP
-If choices ± → think subset / knapsack
-If movement → think grid DP
-If constraints → add dimension
-🧪 Practice Order (Important)
+### Step-by-step thinking:
+
+1. ❓ “What am I counting?”
+2. 📍 “What defines my state?”
+3. 🔁 “Where can I come from?”
+4. 🧱 “What are base cases?”
+5. 🔄 “Tabulation or recursion?”
+
+---
+
+# 💡 Pro Tips (THIS is what makes you strong)
+
+* If order matters → **permutation DP**
+* If order doesn’t matter → **combination DP**
+* If choices ± → think **subset / knapsack**
+* If movement → think **grid DP**
+* If constraints → add dimension
+
+---
+
+# 🧪 Practice Order (Important)
 
 Do in this exact order:
 
-EASY FOUNDATION
-Climbing Stairs
-Unique Paths
-CORE PATTERN
-Target Sum
-Combination Sum IV
-Number of Dice Rolls With Target Sum
-MEDIUM ADVANCED
-Knight Dialer
-Out of Boundary Paths
-HARD / INTERVIEW LEVEL
-Count Vowels Permutation
-Dice Roll Simulation
-🎯 Final Insight (Most Important)
+### EASY FOUNDATION
+
+1. Climbing Stairs
+2. Unique Paths
+
+---
+
+### CORE PATTERN
+
+3. Target Sum
+4. Combination Sum IV
+5. Number of Dice Rolls With Target Sum
+
+---
+
+### MEDIUM ADVANCED
+
+6. Knight Dialer
+7. Out of Boundary Paths
+
+---
+
+### HARD / INTERVIEW LEVEL
+
+8. Count Vowels Permutation
+9. Dice Roll Simulation
+
+---
+
+# 🎯 Final Insight (Most Important)
 
 All 17 problems reduce to:
 
-👉 “Count number of ways to reach a state using valid transitions”
+> 👉 “Count number of ways to reach a state using valid transitions”
 
 If you deeply internalize:
 
-state
-transition
+* state
+* transition
 
 👉 You’ll solve even unseen problems.
+
+---
+
+If you want, I can:
+
+* Solve 3–4 problems and show how SAME pattern applies
+* Or give you **templates (Java)** for each subtype
+
+Just tell me 👍
