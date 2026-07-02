@@ -28,6 +28,5 @@ public class LC1223DiceRollSimulation {
             dp[n][prev][consCount]=ways;
             return ways;
         }
-
     }
 }
